@@ -4,6 +4,7 @@ import ICLab2.Domain.*;
 import ICLab2.Repository.XMLFileRepository.NotaXMLRepo;
 import java.io.*;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class NotaXMLService extends AbstractXMLService<Integer,Nota>{
     private NotaXMLRepo xmlrepo;
@@ -41,7 +42,7 @@ public class NotaXMLService extends AbstractXMLService<Integer,Nota>{
 
     @Override
     protected Nota extractEntity(String[] params){
-        Nota n=new Nota(Integer.parseInt(params[0]),params[1],Integer.parseInt(params[2]),Double.parseDouble(params[3]), LocalDateTime.parse(params[4]));
+        Nota n=new Nota(Integer.parseInt(params[0]),params[1],Integer.parseInt(params[2]),Double.parseDouble(params[3]), LocalDateTime.parse(params[4], DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
         return n;
 
     }
